@@ -17,7 +17,7 @@ class Index {
             return JSON.parse(notes) || [];
         })
     }
-    addNotes(note) {
+    addNote(note) {
         const { title, text } = note
         if (!title || !text ) {
             throw new Error("Title and content cannot be blank")
@@ -28,14 +28,14 @@ class Index {
         .then(updatedNotes => this.write(updatedNotes))
         .then(() => this.newNote)
     }
-    removeNotes(id) {
+    removeNote(id) {
         return this.getNotes()
         .then(notes => notes.filter(note => note.id !== id))
         .then(savedNotes => this.write(savedNotes))
     }
 }
 
-module.export = new Index();
+module.exports = new Index();
 
 // concat notes line 14
 // call get notes use 2.then create parsed note
